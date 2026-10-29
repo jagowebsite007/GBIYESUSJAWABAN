@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GBI Yesus Jawaban - Berakar dalam Kristus, Bertumbuh dalam Kasih</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Nunito Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind Custom Colors Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            warmBg: '#FCFAF6',
+            primaryBlue: '#2C5F8A',
+            primaryHover: '#1E4363',
+            sunYellow: '#F2C14E',
+            darkNavy: '#1A2530',
+            deepBlack: '#0F172A',
+            softSage: '#F1F4F0',
+            softCard: '#FFFFFF'
+          },
+          fontFamily: {
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Nunito Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #FCFAF6;
+      color: #1A2530;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .glass-nav {
+      background: rgba(26, 37, 48, 0.95);
+      backdrop-filter: blur(12px);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-move {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-sunYellow selection:text-darkNavy">
+
+  <!-- TICKER MARQUEE BANNER -->
+  <div class="bg-primaryBlue text-white text-xs font-semibold py-2 border-b border-white/10 z-50 relative overflow-hidden">
+    <div class="ticker-wrap max-w-7xl mx-auto px-4">
+      <div class="ticker-move inline-flex space-x-12">
+        <span><i class="fa-solid fa-cross text-sunYellow mr-2"></i> GBI YESUS JAWABAN — BERAKAR DALAM KRISTUS, BERTUMBUH DALAM KASIH</span>
+        <span><i class="fa-solid fa-calendar-day text-sunYellow mr-2"></i> IBADAH RAYA MINGGU: SESI 1 (09.15 WIT)</span>
+        <span><i class="fa-solid fa-heart-handshake text-sunYellow mr-2"></i> LAYANAN KONSELING & DOA PASTORAL TERSEDIA SETIAP HARI</span>
+        <span><i class="fa-solid fa-cross text-sunYellow mr-2"></i> GBI YESUS JAWABAN — BERAKAR DALAM KRISTUS, BERTUMBUH DALAM KASIH</span>
+        <span><i class="fa-solid fa-calendar-day text-sunYellow mr-2"></i> IBADAH RAYA MINGGU: SESI 1 (09.15 WIT)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR ELEGANT & MODERN -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-gray-800 shadow-xl transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Brand -->
+        <a href="#beranda" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-sunYellow overflow-hidden flex items-center justify-center p-0.5 shadow-md group-hover:scale-105 transition-transform duration-200">
+            <img src="https://lh3.googleusercontent.com/d/1wLq5bA1UthoEX0Qc9k5aCwAcSG2KR2XO" alt="Logo GBI Yesus Jawaban" class="w-full h-full object-contain rounded-lg" referrerpolicy="no-referrer">
+          </div>
+          <div>
+            <span class="block text-lg font-extrabold text-white tracking-wider leading-none">GBI YESUS JAWABAN</span>
+            <span class="block text-[10px] font-bold text-sunYellow tracking-widest uppercase mt-1">Gereja Bethel Indonesia</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold text-gray-200 tracking-wider uppercase">
+          <a href="#beranda" class="hover:text-sunYellow transition-colors">Beranda</a>
+          <a href="#profil" class="hover:text-sunYellow transition-colors">Gereja</a>
+          <a href="#jadwal" class="hover:text-sunYellow transition-colors">Ibadah</a>
+          <a href="#komunitas" class="hover:text-sunYellow transition-colors">Komunitas</a>
+          <a href="#acara" class="hover:text-sunYellow transition-colors">Acara Kita</a>
+          <a href="#konseling" class="hover:text-sunYellow transition-colors">Konseling</a>
+          <a href="#persembahan" class="hover:text-sunYellow transition-colors">Memberi</a>
+        </nav>
+
+        <!-- CTA & Language Selector -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <!-- Language Selector Mockup -->
+          <div class="flex items-center space-x-1 border border-gray-700 bg-gray-900/60 px-2.5 py-1.5 rounded-lg text-xs font-bold text-gray-300">
+            <span class="text-sm">🇮🇩</span>
+            <span>ID</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 ml-1"></i>
+          </div>
+
+          <a href="#konseling" class="px-4 py-2.5 rounded-xl bg-sunYellow hover:bg-yellow-400 text-darkNavy font-black text-xs tracking-wider uppercase transition-all duration-200 shadow-md flex items-center space-x-2">
+            <i class="fa-solid fa-hands-praying"></i>
+            <span>Layanan Doa</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobileMenuBtn" class="p-2.5 rounded-xl text-white hover:bg-gray-800 focus:outline-none">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-darkNavy border-b border-gray-800 px-4 pt-3 pb-6 space-y-2 text-sm font-bold text-gray-200">
+      <a href="#beranda" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Beranda</a>
+      <a href="#profil" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Profil Gereja</a>
+      <a href="#jadwal" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Jadwal Ibadah</a>
+      <a href="#komunitas" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Komunitas</a>
+      <a href="#acara" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Acara & Kegiatan</a>
+      <a href="#konseling" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Konseling & Doa</a>
+      <a href="#persembahan" class="block py-2 px-3 rounded-lg hover:bg-gray-800">Persembahan Online</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO SECTION MODEREN -->
+    <section id="beranda" class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-darkNavy via-darkNavy to-deepBlack text-white">
+      <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#2C5F8A_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-sunYellow text-xs font-extrabold uppercase tracking-widest">
+              <i class="fa-solid fa-church"></i>
+              <span>Selamat Datang di GBI Yesus Jawaban</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight">
+              LIVING AN <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sunYellow via-yellow-200 to-white">IMPACTFUL LIFE.</span>
+            </h1>
+            
+            <p class="text-lg sm:text-2xl font-bold text-gray-300 italic">
+              "Berakar dalam Kristus, bertumbuh dalam Kasih."
+            </p>
+            
+            <p class="text-sm sm:text-base text-gray-400 max-w-2xl leading-relaxed">
+              Wadah persekutuan yang akuntabel, penuh kasih, dan berfokus pada pemulihan jiwa serta pembentukan murid Kristus yang membawa dampak bagi keluarga dan masyarakat.
+            </p>
+            
+            <div class="pt-4 flex flex-wrap gap-4">
+              <a href="#komunitas" class="px-7 py-4 rounded-xl bg-sunYellow hover:bg-yellow-400 text-darkNavy font-extrabold text-xs tracking-wider uppercase shadow-xl transition-all duration-200 flex items-center space-x-2">
+                <i class="fa-solid fa-users"></i>
+                <span>Gabung Komunitas</span>
+              </a>
+              <a href="#jadwal" class="px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-extrabold text-xs tracking-wider uppercase transition-all duration-200 flex items-center space-x-2">
+                <i class="fa-regular fa-clock text-sunYellow"></i>
+                <span>Jadwal Ibadah Minggu</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Video Banner Mockup (Gedung Utama Image) -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-gray-700 bg-gray-900 group">
+              <img src="https://lh3.googleusercontent.com/d/18MlCahn4CvWTfNR6w5Z-wr_RMo_EhJzp" alt="Ibadah GBI Yesus Jawaban" class="w-full h-[450px] object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" referrerpolicy="no-referrer">
+              <div class="absolute inset-0 bg-gradient-to-t from-deepBlack via-transparent to-transparent flex flex-col justify-end p-8">
+                <span class="text-xs uppercase font-extrabold text-sunYellow tracking-widest">Gedung Utama</span>
+                <h3 class="text-2xl font-black text-white">Ibadah Raya Setiap Minggu</h3>
+                <p class="text-xs text-gray-300 mt-1"><i class="fa-solid fa-location-dot mr-1 text-sunYellow"></i> Jl. Kampung baru, Gamsungi</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION ACARA KITA -->
+    <section id="acara" class="py-16 bg-warmBg border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header with Arrows -->
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-black text-darkNavy uppercase tracking-tight">ACARA KITA</h2>
+            <p class="text-xs sm:text-sm font-semibold text-gray-500 mt-1">Ikuti konferensi, retreat, dan kegiatan pelayanan mendatang.</p>
+          </div>
+
+          <!-- Slider Navigation Arrows -->
+          <div class="flex items-center space-x-2">
+            <button onclick="scrollAcara(-1)" class="w-11 h-11 rounded-full border-2 border-darkNavy hover:bg-darkNavy hover:text-white text-darkNavy font-bold flex items-center justify-center transition-all duration-200">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button onclick="scrollAcara(1)" class="w-11 h-11 rounded-full border-2 border-darkNavy hover:bg-darkNavy hover:text-white text-darkNavy font-bold flex items-center justify-center transition-all duration-200">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Horizontal Scrollable Event Cards Grid -->
+        <div id="acaraSlider" class="flex space-x-6 overflow-x-auto scroll-smooth hide-scrollbar pb-6">
+          
+          <!-- Card 1 -->
+          <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] bg-black rounded-3xl overflow-hidden shadow-xl border border-gray-800 flex-shrink-0 flex flex-col justify-between group">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/d/1sj438x74Ir6M6sQWz0ZmeRGfAs4cWAbG" alt="Retreat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerpolicy="no-referrer">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+              
+              <!-- Floating QR & Tag -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full bg-sunYellow text-darkNavy font-black text-[10px] uppercase tracking-wider">IGNITE REVIVAL 2026</span>
+                <i class="fa-solid fa-qrcode text-white text-2xl"></i>
+              </div>
+            </div>
+
+            <div class="p-6 bg-black text-white text-center flex-grow flex flex-col justify-between">
+              <h3 class="text-lg font-black uppercase tracking-wide mb-4">IGNITE REVIVAL YOUTH GENERATION</h3>
+              
+              <!-- Card Bottom Badge -->
+              <div class="w-full py-2.5 px-4 rounded-xl bg-primaryBlue text-white font-extrabold text-xs flex items-center justify-between uppercase tracking-wider">
+                <span>SE-HALUT</span>
+                <span>22 SEPTEMBER 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] bg-black rounded-3xl overflow-hidden shadow-xl border border-gray-800 flex-shrink-0 flex flex-col justify-between group">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Asia Conference" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerpolicy="no-referrer">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-sunYellow text-darkNavy font-black text-[10px] uppercase tracking-wider">KONFERENSI</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-black text-white text-center flex-grow flex flex-col justify-between">
+              <h3 class="text-lg font-black uppercase tracking-wide mb-4">ASIA LEADERSHIP CONFERENCE</h3>
+              
+              <div class="w-full py-2.5 px-4 rounded-xl bg-primaryBlue text-white font-extrabold text-xs flex items-center justify-between uppercase tracking-wider">
+                <span>GLOBAL</span>
+                <span>OKTOBER 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] bg-black rounded-3xl overflow-hidden shadow-xl border border-gray-800 flex-shrink-0 flex flex-col justify-between group">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800" alt="Worship Night" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerpolicy="no-referrer">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-sunYellow text-darkNavy font-black text-[10px] uppercase tracking-wider">WORSHIP NIGHT</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-black text-white text-center flex-grow flex flex-col justify-between">
+              <h3 class="text-lg font-black uppercase tracking-wide mb-4">WORSHIP NIGHT - OPEN HEAVENS</h3>
+              
+              <div class="w-full py-2.5 px-4 rounded-xl bg-primaryBlue text-white font-extrabold text-xs flex items-center justify-between uppercase tracking-wider">
+                <span>LOKAL</span>
+                <span>DESEMBER 2026</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER KONSELING & DOA -->
+    <section id="konseling" class="relative py-20 bg-[#E3DEC3] text-darkNavy overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-4">
+            <h2 class="text-5xl sm:text-7xl font-black tracking-tight text-darkNavy leading-none">
+              Counseling
+            </h2>
+            <p class="text-lg font-bold text-gray-700 tracking-wider">
+              p e n d a f t a r a n &nbsp; g b i y e s u s j a w a b a n . o r g / c o u n s e l i n g
+            </p>
+            <p class="text-sm text-gray-800 max-w-xl leading-relaxed pt-2">
+              Setiap pergumulan, masalah keluarga, dan kerinduan doa Anda akan didoakan serta didampingi secara pribadi oleh Tim Pastoral GBI Yesus Jawaban dengan asas kerahasiaan penuh.
+            </p>
+
+            <div class="pt-4">
+              <a href="#doa" class="px-8 py-4 rounded-2xl bg-darkNavy hover:bg-black text-white font-black text-xs tracking-widest uppercase shadow-xl inline-flex items-center space-x-3">
+                <i class="fa-solid fa-hands-praying text-sunYellow"></i>
+                <span>DAFTAR KONSELING SEKARANG</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 relative">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <img src="https://lh3.googleusercontent.com/d/1rTj5-bxh09eA5Fe65076IJiafLV_lsIa" alt="Pastoral Care" class="w-full h-[320px] object-cover" referrerpolicy="no-referrer">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KOMUNITAS -->
+    <section id="komunitas" class="py-16 bg-warmBg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl font-black text-darkNavy uppercase">KOMUNITAS GEREJA</h2>
+          <div class="w-16 h-1 bg-sunYellow mx-auto my-3 rounded-full"></div>
+          <p class="text-gray-600 text-sm">Bertumbuh bersama dalam kelompok komunitas yang saling mendoakan, menguatkan, dan membangun iman.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-primaryBlue/10 text-primaryBlue flex items-center justify-center font-bold text-xl mb-4">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="text-lg font-bold text-darkNavy">Komunitas S A R</h3>
+            <p class="text-xs text-gray-500 mt-2">Komunitas generasi muda yang dinamis, kreatif, dan berakar dalam Firman Tuhan.</p>
+            <span class="block text-xs font-extrabold text-primaryBlue mt-4">Setiap Hari Sabtu, 19.00 WIT</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-sunYellow/20 text-darkNavy flex items-center justify-center font-bold text-xl mb-4">
+              <i class="fa-solid fa-house-chimney-window"></i>
+            </div>
+            <h3 class="text-lg font-bold text-darkNavy">Family Altar</h3>
+            <p class="text-xs text-gray-500 mt-2">Wadah persekutuan keluarga-keluarga untuk membangun mezbah keluarga yang kokoh.</p>
+            <span class="block text-xs font-extrabold text-primaryBlue mt-4">Setiap Hari Rabu, 19.00 WIT</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-primaryBlue/10 text-primaryBlue flex items-center justify-center font-bold text-xl mb-4">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h3 class="text-lg font-bold text-darkNavy">Komunitas Pria Sejati</h3>
+            <p class="text-xs text-gray-500 mt-2">Persekutuan para kepala keluarga dan pria untuk menjadi imam yang berdampak.</p>
+            <span class="block text-xs font-extrabold text-primaryBlue mt-4">Setiap Hari Minggu, 11.00 WIT</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-sunYellow/20 text-darkNavy flex items-center justify-center font-bold text-xl mb-4">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3 class="text-lg font-bold text-darkNavy">Komunitas Wanita Bijak</h3>
+            <p class="text-xs text-gray-500 mt-2">Wadah saling menguatkan bagi kaum wanita dalam doa dan kebajikan rumah tangga.</p>
+            <span class="block text-xs font-extrabold text-primaryBlue mt-4">Setiap Hari Minggu, 11.00 WIT</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL & SEJARAH GEREJA -->
+    <section id="profil" class="py-16 bg-softSage/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl font-extrabold text-darkNavy">Profil & Visi Gereja</h2>
+          <div class="w-16 h-1 bg-sunYellow mx-auto my-3 rounded-full"></div>
+          <p class="text-gray-600 text-sm">Mengenal perjalanan pelayanan dan komitmen spiritual GBI Yesus Jawaban.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-primaryBlue/10 text-primaryBlue flex items-center justify-center text-xl font-bold mb-6">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <h3 class="text-xl font-bold text-darkNavy mb-3">Visi Utama</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Menjadi gereja yang berakar kuat dalam kebenaran Firman Kristus, berbuah dalam kasih pelayanan, dan membawa dampak transformasi rohani bagi bangsa.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-sunYellow/20 text-darkNavy flex items-center justify-center text-xl font-bold mb-6">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <h3 class="text-xl font-bold text-darkNavy mb-3">Misi Pelayanan</h3>
+            <ul class="text-gray-600 text-sm space-y-2 list-disc list-inside leading-relaxed">
+              <li>Membangun pengajaran Alkitabiah yang murni dan relevan.</li>
+              <li>Menyelenggarakan aksi sosial & diakonia yang nyata.</li>
+              <li>Mewujudkan kasih serta integritas dalam pelayanan gereja.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div class="w-12 h-12 rounded-xl bg-softSage text-primaryBlue flex items-center justify-center text-xl font-bold mb-6">
+              <i class="fa-solid fa-monument"></i>
+            </div>
+            <h3 class="text-xl font-bold text-darkNavy mb-3">Nilai Inti (Core Values)</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Kasih, Integritas, Pelayanan Rendah Hati, dan Kesatuan Hati dalam Tubuh Kristus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JADWAL IBADAH LENGKAP -->
+    <section id="jadwal" class="py-16 bg-warmBg border-y border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl font-extrabold text-darkNavy">Jadwal Ibadah Mingguan</h2>
+          <div class="w-16 h-1 bg-primaryBlue mx-auto my-3 rounded-full"></div>
+          <p class="text-gray-600 text-sm">Mari hadir dan bertumbuh bersama dalam ibadah rutin jemaat.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 relative overflow-hidden group hover:border-primaryBlue transition-all">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-primaryBlue/10 rounded-bl-full flex items-start justify-end p-3 text-primaryBlue font-bold">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+            <span class="text-xs font-extrabold text-primaryBlue uppercase tracking-wider">Ibadah Utama</span>
+            <h3 class="text-lg font-bold text-darkNavy mt-1">Ibadah Raya 1 </h3>
+            <p class="text-xs text-gray-500 mt-1">Hari Minggu</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm font-semibold text-darkNavy">
+              <div class="flex items-center justify-between">
+                <span>Sesi 1:</span>
+                <span class="text-primaryBlue font-bold">09.15 WIT</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 relative overflow-hidden group hover:border-primaryBlue transition-all">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-sunYellow/20 rounded-bl-full flex items-start justify-end p-3 text-darkNavy font-bold">
+              <i class="fa-solid fa-child"></i>
+            </div>
+            <span class="text-xs font-extrabold text-primaryBlue uppercase tracking-wider">Anak-Anak</span>
+            <h3 class="text-lg font-bold text-darkNavy mt-1">Sekolah Minggu</h3>
+            <p class="text-xs text-gray-500 mt-1">Kids Church (3 - 12 Thn)</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm font-semibold text-darkNavy">
+              <div class="flex items-center justify-between">
+                <span>Minggu:</span>
+                <span class="text-primaryBlue font-bold">10.00 WIT</span>
+              </div>
+              <p class="text-xs font-normal text-gray-500">Bersamaan dengan Firman Tuhan</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 relative overflow-hidden group hover:border-primaryBlue transition-all">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-primaryBlue/10 rounded-bl-full flex items-start justify-end p-3 text-primaryBlue font-bold">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <span class="text-xs font-extrabold text-primaryBlue uppercase tracking-wider">Pemuda</span>
+            <h3 class="text-lg font-bold text-darkNavy mt-1">Ibadah Youth</h3>
+            <p class="text-xs text-gray-500 mt-1">Generasi Muda Kristus</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm font-semibold text-darkNavy">
+              <div class="flex items-center justify-between">
+                <span>Sabtu:</span>
+                <span class="text-primaryBlue font-bold">18.00 WIT</span>
+              </div>
+              <p class="text-xs font-normal text-gray-500">Gedung Gereja</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 relative overflow-hidden group hover:border-primaryBlue transition-all">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-sunYellow/20 rounded-bl-full flex items-start justify-end p-3 text-darkNavy font-bold">
+              <i class="fa-solid fa-hands-praying"></i>
+            </div>
+            <span class="text-xs font-extrabold text-primaryBlue uppercase tracking-wider">Persekutuan</span>
+            <h3 class="text-lg font-bold text-darkNavy mt-1">Doa Pelayan</h3>
+            <p class="text-xs text-gray-500 mt-1">Doa & Sharing Firman Alkitab</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm font-semibold text-darkNavy">
+              <div class="flex items-center justify-between">
+                <span>Rabu:</span>
+                <span class="text-primaryBlue font-bold">19.00 WIT</span>
+              </div>
+              <p class="text-xs font-normal text-gray-500">Rumah Jemaat</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULIR DOA & KONSELING PASTORAL -->
+    <section id="doa" class="py-16 bg-warmBg">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-darkNavy via-darkNavy to-deepBlack rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-gray-800">
+          
+          <div class="relative z-10 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 text-sunYellow text-xs font-extrabold uppercase tracking-wider">
+              <i class="fa-solid fa-user-shield"></i>
+              <span>Kerahasiaan Terjamin</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-black">Formulir Permohonan Doa & Konseling</h2>
+            <p class="text-gray-300 text-sm leading-relaxed max-w-2xl">
+              Tuliskan pokok doa atau permohonan konseling Anda. Tim Pastoral GBI Yesus Jawaban akan mendoakan dan menghubungi Anda secara pribadi.
+            </p>
+
+            <form id="formDoa" onsubmit="handleSubmitDoa(event)" class="space-y-4 pt-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-gray-300 mb-1">Nama Lengkap (Bisa Anonim)</label>
+                  <input type="text" id="doaNama" placeholder="Nama Anda" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:ring-2 focus:ring-sunYellow focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-300 mb-1">No. WhatsApp / HP (Opsional)</label>
+                  <input type="text" id="doaHp" placeholder="08xxxxxxxxxx" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:ring-2 focus:ring-sunYellow focus:outline-none">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">Kategori Doa / Konseling *</label>
+                <select id="doaKategori" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white text-sm focus:ring-2 focus:ring-sunYellow focus:outline-none">
+                  <option value="Pribadi" class="text-darkNavy">Pribadi & Kerohanian</option>
+                  <option value="Konseling Keluarga" class="text-darkNavy">Keluarga & Pernikahan</option>
+                  <option value="Kesehatan" class="text-darkNavy">Kesembuhan & Kesehatan</option>
+                  <option value="Pekerjaan" class="text-darkNavy">Pekerjaan & Usaha</option>
+                  <option value="Konseling Pranikah" class="text-darkNavy">Konseling Pranikah</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-300 mb-1">Pokok Doa / Permohonan Konseling *</label>
+                <textarea id="doaPokok" rows="4" required placeholder="Tuliskan pokok doa Anda secara ringkas..." class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:ring-2 focus:ring-sunYellow focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" id="btnSubmitDoa" class="w-full py-4 rounded-xl bg-sunYellow hover:bg-yellow-400 text-darkNavy font-black text-xs tracking-widest uppercase shadow-xl transition-all duration-200 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>KIRIM PERMOHONAN DOA</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSEMBAHAN DAN DONASI ONLINE -->
+    <section id="persembahan" class="py-16 bg-warmBg border-t border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-xs font-extrabold text-primaryBlue uppercase tracking-wider">Dukungan Pelayanan</span>
+              <h2 class="text-3xl font-extrabold text-darkNavy mt-1">Persembahan Nontunai</h2>
+              <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                Saluran persembahan persepuluhan, ucapan syukur, dan donasi pembangunan yang aman dan tepercaya.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 space-y-4 shadow-sm">
+              <div class="flex items-center space-x-3 pb-3 border-b border-gray-100">
+                <div class="w-10 h-10 rounded-lg bg-primaryBlue text-white flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-400">Bank Rakyat Indonesia (BRI)</span>
+                  <span class="block text-base font-black text-darkNavy">8888-8888-88888</span>
+                  <span class="block text-xs font-semibold text-primaryBlue">a.n. GBI Yesus Jawaban</span>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-sunYellow text-darkNavy flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-400">QRIS Standar Nasional</span>
+                  <span class="block text-sm font-bold text-darkNavy">Scan via Aplikasi M-Banking / e-Wallet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Konfirmasi -->
+          <div class="lg:col-span-7 bg-white p-8 rounded-3xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-darkNavy mb-2">Formulir Konfirmasi Persembahan</h3>
+            <p class="text-xs text-gray-500 mb-6">Silakan isi formulir di bawah setelah melakukan transfer/scan QRIS.</p>
+
+            <form id="formPersembahan" onsubmit="handleSubmitPersembahan(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-darkNavy mb-1">Nama Jemaat (Bisa Anonim)</label>
+                  <input type="text" id="donNama" placeholder="Contoh: Budi Santoso / Hamba Allah" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-primaryBlue focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-darkNavy mb-1">Jenis Persembahan *</label>
+                  <select id="donJenis" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-primaryBlue focus:outline-none">
+                    <option value="Persepuluhan">Persepuluhan</option>
+                    <option value="Persembahan Kasih">Persembahan Kasih / Ucapan Syukur</option>
+                    <option value="Persembahan Misi">Persembahan Misi & Diakonia</option>
+                    <option value="Pembangunan">Pembangunan Gedung</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-darkNavy mb-1">Jumlah Nominal (Rp) *</label>
+                  <input type="number" id="donJumlah" required placeholder="Contoh: 100000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-primaryBlue focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-darkNavy mb-1">Metode Pembayaran *</label>
+                  <select id="donMetode" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-primaryBlue focus:outline-none">
+                    <option value="QRIS">QRIS / e-Wallet</option>
+                    <option value="Transfer Bank">Transfer Bank BRI</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-darkNavy mb-1">Catatan Tambahan (Opsional)</label>
+                <input type="text" id="donCatatan" placeholder="Keterangan persembahan..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-primaryBlue focus:outline-none">
+              </div>
+
+              <button type="submit" id="btnSubmitPersembahan" class="w-full py-3.5 rounded-xl bg-primaryBlue hover:bg-primaryHover text-white font-black text-xs tracking-wider uppercase shadow-md transition-all duration-200 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>KIRIM KONFIRMASI PERSEMBAHAN</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-darkNavy text-white py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-sunYellow overflow-hidden flex items-center justify-center p-0.5">
+              <img src="https://lh3.googleusercontent.com/d/1wLq5bA1UthoEX0Qc9k5aCwAcSG2KR2XO" alt="Logo GBI Yesus Jawaban" class="w-full h-full object-contain rounded-md" referrerpolicy="no-referrer">
+            </div>
+            <span class="text-lg font-bold">GBI YESUS JAWABAN</span>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Gereja Bethel Indonesia — Berakar dalam Kristus, bertumbuh dalam Kasih. Menjadi wadah persekutuan yang membawa dampak bagi masyarakat.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-extrabold text-sunYellow uppercase tracking-wider mb-3">Sekretariat Gereja</h4>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            Jl. Kampung baru, Gamsungi<br>
+            Telepon / WA: 0852-5684-9510<br>
+            Email: sekretariat@gbiyesusjawaban.org
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-extrabold text-sunYellow uppercase tracking-wider mb-3">Jam Sekretariat</h4>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            Selasa - Sabtu: 09.00 - 17.00 WIT<br>
+            Minggu: Pelayanan Ibadah Raya<br>
+            Senin: Libur Penggembalaan
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        &copy; 2026 GBI Yesus Jawaban. All rights reserved. Powered by JagoWebsite.
+      </div>
+    </div>
+  </footer>
+
+  <!-- CUSTOM TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 max-w-md w-full bg-darkNavy text-white p-4 rounded-2xl shadow-2xl border border-gray-700 flex items-center space-x-3 pointer-events-none">
+    <div id="toastIcon" class="w-10 h-10 rounded-xl bg-sunYellow text-darkNavy flex items-center justify-center font-bold text-lg">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div class="flex-grow">
+      <h5 id="toastTitle" class="text-sm font-bold">Informasi</h5>
+      <p id="toastMessage" class="text-xs text-gray-300">Pesan notifikasi...</p>
+    </div>
+  </div>
+
+  <!-- FRONTEND SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setupMobileMenu();
+      loadStatistik();
+    });
+
+    function setupMobileMenu() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+        });
+      }
+    }
+
+    function scrollAcara(direction) {
+      var container = document.getElementById('acaraSlider');
+      if (container) {
+        container.scrollBy({ left: direction * 340, behavior: 'smooth' });
+      }
+    }
+
+    function safeRun(functionName, successCallback, failureCallback, arg1, arg2, arg3, arg4) {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        var runner = google.script.run
+          .withSuccessHandler(successCallback)
+          .withFailureHandler(failureCallback || function(err) {
+            showToast('Error Server', err.toString(), 'error');
+          });
+        runner[functionName](arg1, arg2, arg3, arg4);
+      } else {
+        console.warn('Canvas Local Preview: Fallback mode for ' + functionName);
+        if (functionName === 'getStatistikSummary') {
+          successCallback({ jemaatTerlayani: 458 });
+        } else if (functionName === 'submitPersembahan') {
+          setTimeout(function() {
+            successCallback({ success: true, message: 'Konfirmasi persembahan berhasil dikirim.' });
+          }, 400);
+        } else if (functionName === 'submitPermohonanDoa') {
+          setTimeout(function() {
+            successCallback({ success: true, message: 'Permohonan doa telah dikirim.' });
+          }, 400);
+        }
+      }
+    }
+
+    function loadStatistik() {
+      safeRun('getStatistikSummary', function(res) {
+        var statEl = document.getElementById('statJemaat');
+        if (res && res.jemaatTerlayani && statEl) {
+          statEl.innerText = res.jemaatTerlayani + '+';
+        }
+      });
+    }
+
+    function handleSubmitPersembahan(e) {
+      e.preventDefault();
+      var btn = document.getElementById('btnSubmitPersembahan');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Memproses...</span>';
+
+      var formData = {
+        namaJemaat: document.getElementById('donNama').value,
+        jenisPersembahan: document.getElementById('donJenis').value,
+        jumlah: document.getElementById('donJumlah').value,
+        metodePembayaran: document.getElementById('donMetode').value,
+        catatan: document.getElementById('donCatatan').value
+      };
+
+      showToast('Mengirim Data', 'Menyimpan konfirmasi persembahan...', 'info');
+
+      safeRun('submitPersembahan', function(res) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>KIRIM KONFIRMASI PERSEMBAHAN</span>';
+        if (res && res.success) {
+          showToast('Terima Kasih!', res.message, 'success');
+          document.getElementById('formPersembahan').reset();
+        } else {
+          showToast('Gagal Simpan', (res ? res.message : 'Terjadi kesalahan'), 'error');
+        }
+      }, function(err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>KIRIM KONFIRMASI PERSEMBAHAN</span>';
+        showToast('Terjadi Kesalahan', err.toString(), 'error');
+      }, formData);
+    }
+
+    function handleSubmitDoa(e) {
+      e.preventDefault();
+      var btn = document.getElementById('btnSubmitDoa');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Mengirim...</span>';
+
+      var formData = {
+        nama: document.getElementById('doaNama').value,
+        noHp: document.getElementById('doaHp').value,
+        kategoriKonseling: document.getElementById('doaKategori').value,
+        pokokDoa: document.getElementById('doaPokok').value
+      };
+
+      showToast('Mengirim Permohonan', 'Memproses permohonan doa Anda...', 'info');
+
+      safeRun('submitPermohonanDoa', function(res) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>KIRIM PERMOHONAN DOA</span>';
+        if (res && res.success) {
+          showToast('Doa Diterima', res.message, 'success');
+          document.getElementById('formDoa').reset();
+        } else {
+          showToast('Gagal Mengirim', (res ? res.message : 'Terjadi kesalahan'), 'error');
+        }
+      }, function(err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>KIRIM PERMOHONAN DOA</span>';
+        showToast('Terjadi Kesalahan', err.toString(), 'error');
+      }, formData);
+    }
+
+    function showToast(title, message, type) {
+      var toast = document.getElementById('toastNotification');
+      var toastTitle = document.getElementById('toastTitle');
+      var toastMsg = document.getElementById('toastMessage');
+      var toastIcon = document.getElementById('toastIcon');
+
+      if (!toast) return;
+
+      toastTitle.innerText = title;
+      toastMsg.innerText = message;
+
+      if (type === 'success') {
+        toastIcon.className = 'w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center font-bold text-lg';
+        toastIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
+      } else if (type === 'error') {
+        toastIcon.className = 'w-10 h-10 rounded-xl bg-red-500 text-white flex items-center justify-center font-bold text-lg';
+        toastIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+      } else {
+        toastIcon.className = 'w-10 h-10 rounded-xl bg-sunYellow text-darkNavy flex items-center justify-center font-bold text-lg';
+        toastIcon.innerHTML = '<i class="fa-solid fa-info"></i>';
+      }
+
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(function() {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
