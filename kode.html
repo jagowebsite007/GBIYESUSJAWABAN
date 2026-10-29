@@ -1,0 +1,270 @@
+/**
+ * ZettBOT Apps Script Assistant - GBI Yesus Jawaban
+ * File: code.gs
+ * Deskripsi: Server-side API, logika bisnis CRUD, filtering, dan auto-formatting Google Drive links.
+ */
+
+// Render HTML Utama
+function doGet(e) {
+  var template = HtmlService.createTemplateFromFile('index');
+  return template.evaluate()
+    .setTitle('GBI Yesus Jawaban - Berakar dalam Kristus, Bertumbuh dalam Kasih')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1.0')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+// Helper untuk menyertakan file modular bila diperlukan
+function include(filename) {
+  return HtmlService.createTemplateFromFile(filename).getRawContent();
+}
+
+// Helper mendapatkan Spreadsheet Aktif
+function getSpreadsheet() {
+  return SpreadsheetApp.getActiveSpreadsheet();
+}
+
+/**
+ * Helper Otomatis Konversi URL Google Drive ke format Anti-Block (lh3.googleusercontent.com/d/FILE_ID)
+ */
+function formatDriveUrl(url) {
+  if (!url) return '';
+  var match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    return 'https://lh3.googleusercontent.com/d/' + match[1];
+  }
+  return url;
+}
+
+/**
+ * Logika Generator ID Sekuensial (DON-0001, DOA-0001, BRT-0001, KEU-0001)
+ */
+function generateSequentialID(sheetName, prefix) {
+  var ss = getSpreadsheet();
+  var sheet = ss.getSheetByName(sheetName);
+  if (!sheet) return prefix + '-0001';
+  
+  var lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return prefix + '-0001';
+  
+  var nextNumber = lastRow;
+  var formattedNumber = ('0000' + nextNumber).slice(-4);
+  return prefix + '-' + formattedNumber;
+}
+
+/**
+ * Simpan data Konfirmasi Persembahan Nontunai
+ */
+function submitPersembahan(formData) {
+  try {
+    var ss = getSpreadsheet();
+    var sheet = ss.getSheetByName('Persembahan');
+    if (!sheet) {
+      throw new Error('Sheet Persembahan tidak ditemukan. Jalankan setup.gs terlebih dahulu.');
+    }
+    
+    var idTransaksi = generateSequentialID('Persembahan', 'DON');
+    var timestamp = Utilities.formatDate(new Date(), 'Asia/Jakarta', 'dd/MM/yyyy HH:mm:ss');
+    
+    var rowData = [
+      String(idTransaksi),
+      String(timestamp),
+      String(formData.namaJemaat || 'Hamba Allah'),
+      String(formData.jenisPersembahan || 'Persembahan Umum'),
+      String(formData.jumlah || '0'),
+      String(formData.metodePembayaran || 'QRIS'),
+      String(formData.catatan || '-'),
+      'Diterima'
+    ];
+    
+    sheet.appendRow(rowData);
+    SpreadsheetApp.flush();
+    
+    return {
+      success: true,
+      idTransaksi: idTransaksi,
+      message: 'Konfirmasi persembahan berhasil dikirim. Terima kasih atas dukungan pelayanan Anda.'
+    };
+  } catch (err) {
+    return {
+      success: false,
+      message: 'Gagal menyimpan persembahan: ' + err.toString()
+    };
+  }
+}
+
+/**
+ * Simpan Permohonan Doa & Konseling Pastoral
+ */
+function submitPermohonanDoa(formData) {
+  try {
+    var ss = getSpreadsheet();
+    var sheet = ss.getSheetByName('Permohonan_Doa');
+    if (!sheet) {
+      throw new Error('Sheet Permohonan_Doa tidak ditemukan. Jalankan setup.gs terlebih dahulu.');
+    }
+    
+    var idDoa = generateSequentialID('Permohonan_Doa', 'DOA');
+    var timestamp = Utilities.formatDate(new Date(), 'Asia/Jakarta', 'dd/MM/yyyy HH:mm:ss');
+    
+    var rowData = [
+      String(idDoa),
+      String(timestamp),
+      String(formData.nama || 'Anonim'),
+      String(formData.noHp || '-'),
+      String(formData.pokokDoa || ''),
+      String(formData.kategoriKonseling || 'Pribadi'),
+      'Dalam Doa'
+    ];
+    
+    sheet.appendRow(rowData);
+    SpreadsheetApp.flush();
+    
+    return {
+      success: true,
+      idDoa: idDoa,
+      message: 'Permohonan doa telah diterima. Tim Pastoral GBI Yesus Jawaban akan mendoakan permohonan Anda.'
+    };
+  } catch (err) {
+    return {
+      success: false,
+      message: 'Gagal mengirim permohonan doa: ' + err.toString()
+    };
+  }
+}
+
+/**
+ * Mengambil Berita & Pengumuman dengan Auto Format URL Google Drive & Pagination
+ */
+function getBeritaData(page, limit, searchQuery, category) {
+  try {
+    var ss = getSpreadsheet();
+    var sheet = ss.getSheetByName('Berita_Kegiatan');
+    if (!sheet) {
+      return { items: [], total: 0, totalPages: 0, page: 1 };
+    }
+    
+    var lastRow = sheet.getLastRow();
+    if (lastRow <= 1) {
+      return { items: [], total: 0, totalPages: 0, page: 1 };
+    }
+    
+    var rawValues = sheet.getRange(2, 1, lastRow - 1, 6).getDisplayValues();
+    var filteredList = [];
+    
+    var query = (searchQuery || '').toLowerCase().trim();
+    var cat = (category || 'Semua').toLowerCase().trim();
+    
+    for (var i = rawValues.length - 1; i >= 0; i--) {
+      var row = rawValues[i];
+      var rawImgUrl = row[5] || '';
+      var formattedImgUrl = formatDriveUrl(rawImgUrl) || 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800';
+
+      var item = {
+        id: row[0],
+        tanggal: row[1],
+        judul: row[2],
+        kategori: row[3],
+        isiRingkas: row[4],
+        linkGambar: formattedImgUrl
+      };
+      
+      var matchQuery = !query || item.judul.toLowerCase().indexOf(query) !== -1 || item.isiRingkas.toLowerCase().indexOf(query) !== -1;
+      var matchCat = (cat === 'semua') || item.kategori.toLowerCase() === cat;
+      
+      if (matchQuery && matchCat) {
+        filteredList.push(item);
+      }
+    }
+    
+    var total = filteredList.length;
+    var currentPage = page || 1;
+    var perPage = limit || 4;
+    var totalPages = Math.ceil(total / perPage) || 1;
+    
+    var startIndex = (currentPage - 1) * perPage;
+    var paginatedItems = filteredList.slice(startIndex, startIndex + perPage);
+    
+    return {
+      items: paginatedItems,
+      total: total,
+      totalPages: totalPages,
+      page: currentPage
+    };
+  } catch (err) {
+    return { items: [], total: 0, totalPages: 0, page: 1, error: err.toString() };
+  }
+}
+
+/**
+ * Mengambil Rekap Laporan Keuangan Transparan
+ */
+function getKeuanganSummary() {
+  try {
+    var ss = getSpreadsheet();
+    var sheet = ss.getSheetByName('Transparansi_Keuangan');
+    if (!sheet) {
+      return { items: [], totalPemasukan: 0, totalPengeluaran: 0, saldo: 0 };
+    }
+    
+    var lastRow = sheet.getLastRow();
+    if (lastRow <= 1) {
+      return { items: [], totalPemasukan: 0, totalPengeluaran: 0, saldo: 0 };
+    }
+    
+    var rawValues = sheet.getRange(2, 1, lastRow - 1, 5).getDisplayValues();
+    var items = [];
+    var grandTotalMasuk = 0;
+    var grandTotalKeluar = 0;
+    
+    for (var i = rawValues.length - 1; i >= 0; i--) {
+      var row = rawValues[i];
+      var masuk = parseFloat(row[2].replace(/[^0-9.-]+/g, '')) || 0;
+      var keluar = parseFloat(row[3].replace(/[^0-9.-]+/g, '')) || 0;
+      
+      grandTotalMasuk += masuk;
+      grandTotalKeluar += keluar;
+      
+      items.push({
+        id: row[0],
+        bulanTahun: row[1],
+        pemasukan: masuk,
+        pengeluaran: keluar,
+        keterangan: row[4]
+      });
+    }
+    
+    return {
+      items: items,
+      totalPemasukan: grandTotalMasuk,
+      totalPengeluaran: grandTotalKeluar,
+      saldo: grandTotalMasuk - grandTotalKeluar
+    };
+  } catch (err) {
+    return { items: [], totalPemasukan: 0, totalPengeluaran: 0, saldo: 0, error: err.toString() };
+  }
+}
+
+/**
+ * Ringkasan statistik untuk indikator publik gereja
+ */
+function getStatistikSummary() {
+  try {
+    var ss = getSpreadsheet();
+    var sheetPersembahan = ss.getSheetByName('Persembahan');
+    var sheetDoa = ss.getSheetByName('Permohonan_Doa');
+    var sheetBerita = ss.getSheetByName('Berita_Kegiatan');
+    
+    var totalDonasiCount = sheetPersembahan ? Math.max(0, sheetPersembahan.getLastRow() - 1) : 0;
+    var totalDoaCount = sheetDoa ? Math.max(0, sheetDoa.getLastRow() - 1) : 0;
+    var totalKegiatanCount = sheetBerita ? Math.max(0, sheetBerita.getLastRow() - 1) : 0;
+    
+    return {
+      totalDonasi: totalDonasiCount,
+      totalDoa: totalDoaCount,
+      totalKegiatan: totalKegiatanCount,
+      jemaatTerlayani: 450 + totalDoaCount
+    };
+  } catch (e) {
+    return { totalDonasi: 0, totalDoa: 0, totalKegiatan: 0, jemaatTerlayani: 450 };
+  }
+}

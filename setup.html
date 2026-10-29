@@ -1,0 +1,120 @@
+/**
+ * ZettBOT Apps Script Assistant - GBI Yesus Jawaban
+ * File: setup.gs
+ * Deskripsi: Inisialisasi database non-destruktif (Safe Migrate) & data dummy sampel.
+ */
+
+// Konfigurasi Nama Sheet & Header Kolom
+var DATABASE_SCHEMA = {
+  Persembahan: [
+    'ID_Transaksi',
+    'Tanggal',
+    'Nama_Jemaat',
+    'Jenis_Persembahan',
+    'Jumlah',
+    'Metode_Pembayaran',
+    'Catatan',
+    'Status'
+  ],
+  Permohonan_Doa: [
+    'ID_Doa',
+    'Tanggal',
+    'Nama',
+    'No_HP',
+    'Pokok_Doa',
+    'Kategori_Konseling',
+    'Status_Tindak_Lanjut'
+  ],
+  Berita_Kegiatan: [
+    'ID_Berita',
+    'Tanggal',
+    'Judul',
+    'Kategori',
+    'Isi_Ringkas',
+    'Link_Gambar'
+  ],
+  Transparansi_Keuangan: [
+    'ID_Laporan',
+    'Bulan_Tahun',
+    'Pemasukan',
+    'Pengeluaran',
+    'Keterangan_Program'
+  ]
+};
+
+/**
+ * Inisialisasi Database dengan metode Safe Migrate
+ * Mencegah penghapusan/clear() data eksisting pengguna.
+ */
+function setupDatabase() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  
+  for (var sheetName in DATABASE_SCHEMA) {
+    var headers = DATABASE_SCHEMA[sheetName];
+    var sheet = ss.getSheetByName(sheetName);
+    
+    if (!sheet) {
+      // Jika sheet belum ada, buat sheet baru
+      sheet = ss.insertSheet(sheetName);
+      sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+      sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#2C5F8A').setFontColor('#FFFFFF');
+    } else {
+      // Safe Migrate: Update header baris pertama tanpa menghapus data
+      var currentHeadersRange = sheet.getRange(1, 1, 1, headers.length);
+      currentHeadersRange.setValues([headers]);
+      currentHeadersRange.setFontWeight('bold').setBackground('#2C5F8A').setFontColor('#FFFFFF');
+    }
+    
+    // Kirim sampel data dummy jika sheet masih kosong
+    if (sheet.getLastRow() <= 1) {
+      populateDummyData(sheet, sheetName);
+    }
+    
+    sheet.autoResizeColumns(1, headers.length);
+  }
+  
+  SpreadsheetApp.flush();
+  Logger.log('Inisialisasi Safe Migrate Database GBI Yesus Jawaban berhasil.');
+}
+
+/**
+ * Menambahkan data dummy awal untuk Safe Preview Canvas & Pengujian
+ */
+function populateDummyData(sheet, sheetName) {
+  var now = Utilities.formatDate(new Date(), 'Asia/Jakarta', 'dd/MM/yyyy HH:mm:ss');
+  var todayDate = Utilities.formatDate(new Date(), 'Asia/Jakarta', 'dd/MM/yyyy');
+  
+  if (sheetName === 'Persembahan') {
+    var dummyPersembahan = [
+      ['DON-0001', now, 'Budi Santoso', 'Persepuluhan', '500000', 'QRIS', 'Persepuluhan Bulan September', 'Diterima'],
+      ['DON-0002', now, 'Hamba Allah', 'Persembahan Misi', '250000', 'Transfer Bank', 'Dukungan Pelayanan Misi', 'Diterima'],
+      ['DON-0003', now, 'Siti Rahma', 'Persembahan Kasih', '150000', 'QRIS', 'Ucapan Syukur', 'Diterima']
+    ];
+    sheet.getRange(2, 1, dummyPersembahan.length, dummyPersembahan[0].length).setValues(dummyPersembahan);
+  } 
+  else if (sheetName === 'Permohonan_Doa') {
+    var dummyDoa = [
+      ['DOA-0001', now, 'Maria A.', '081234567890', 'Mohon doa untuk pemulihan kesehatan orang tua dan kelancaran usaha keluarga.', 'Konseling Keluarga', 'Dalam Doa'],
+      ['DOA-0002', now, 'David K.', '081987654321', 'Bimbingan pastoral untuk persiapan pernikahan dan kesatuan hati.', 'Konseling Pranikah', 'Selesai'],
+      ['DOA-0003', now, 'Anonim', '085211223344', 'Pergumulan pekerjaan dan pemulihan kerohanian.', 'Pribadi', 'Dalam Doa']
+    ];
+    sheet.getRange(2, 1, dummyDoa.length, dummyDoa[0].length).setValues(dummyDoa);
+  }
+  else if (sheetName === 'Berita_Kegiatan') {
+    var dummyBerita = [
+      ['BRT-0001', todayDate, 'Ibadah Padang & Family Day 2026', 'Kegiatan', 'Kebersamaan seluruh jemaat GBI Yesus Jawaban dalam Ibadah Padang penuh sukacita dan kehangatan fellowship.', 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800'],
+      ['BRT-0002', todayDate, 'Seminar Keuangan Keluarga Kristen', 'Edukasi', 'Pembekalan kelola keuangan rumah tangga secara Alkitabiah dan akuntabel bersama Pdt. Andreas.', 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800'],
+      ['BRT-0003', todayDate, 'Pelatihan Worship & Music Ministry', 'Pelayanan', 'Meningkatkan keterampilan teknis dan karakter rohani para pemusik serta pelayan pujian gereja.', 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'],
+      ['BRT-0004', todayDate, 'Aksi Sosial Diakonia & Pengobatan Gratis', 'Sosial', 'Pelayanan kasih kesehatan dan pembagian sembako bagi masyarakat di sekitar gedung gereja.', 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800']
+    ];
+    sheet.getRange(2, 1, dummyBerita.length, dummyBerita[0].length).setValues(dummyBerita);
+  }
+  else if (sheetName === 'Transparansi_Keuangan') {
+    var dummyKeuangan = [
+      ['KEU-0001', 'Juli 2026', '42500000', '36200000', 'Operasional Rutin, Diakonia Jemaat, & Biaya Daya Listrik'],
+      ['KEU-0002', 'Agustus 2026', '45800000', '39100000', 'Perawatan Gedung, Subsidi Sekolah Minggu, & Misi'],
+      ['KEU-0003', 'September 2026', '48200000', '41000000', 'Pengadaan Sound System Baru & Program Aksi Sosial Diakonia']
+    ];
+    sheet.getRange(2, 1, dummyKeuangan.length, dummyKeuangan[0].length).setValues(dummyKeuangan);
+  }
+}
